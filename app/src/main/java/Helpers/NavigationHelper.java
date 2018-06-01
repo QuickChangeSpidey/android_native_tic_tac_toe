@@ -1,46 +1,37 @@
-package com.example.akshay.ticktactoe;
-
+package Helpers;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
-import android.view.View;
+import com.example.akshay.ticktactoe.R;
 
-public class MainActivity extends AppCompatActivity {
+public class NavigationHelper {
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
+    public void createMenuForActivity(AppCompatActivity activity) {
         BottomNavigationView bottomNavigationView =
-                findViewById(R.id.bottom_navigation);
+                activity.findViewById(R.id.bottom_navigation);
 
         bottomNavigationView.setOnNavigationItemSelectedListener(
                 new BottomNavigationView.OnNavigationItemSelectedListener() {
                     @Override
                     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                         switch (item.getItemId()) {
+                            case R.id.action_main:
+                                Log.d("test", "test1");
+                                break;
                             case R.id.action_history:
-                                Log.d("test","test1");
+                                Log.d("test", "test1");
                                 break;
                             case R.id.action_settings:
-                                Log.d("test","test2");
+                                Log.d("test", "test2");
                                 break;
                             case R.id.action_rules:
-                                Log.d("test","test3");
+                                Log.d("test", "test3");
                                 break;
                         }
                         return true;
                     }
                 });
-    }
-
-
-
-
-    public void startGame(View view) {
     }
 }
