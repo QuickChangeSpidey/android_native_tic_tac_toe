@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">TickTacToe</string>
-    <string name="player_1_name">Player 1 Name</string>
-    <string name="player_2_name">Player 2 Name</string>
+    <string name="player_x_name">Player X Name</string>
+    <string name="player_o_name">Player O Name</string>
     <string name="start">START</string>
     <string name="history">History</string>
     <string name="settings">Settings</string>

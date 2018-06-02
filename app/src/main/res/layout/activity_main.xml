@@ -38,7 +38,7 @@
         android:id="@+id/player_one_name_edit_text"
         android:layout_marginBottom="20dp"
         android:textColor="@color/colorAccent"
-        android:hint="@string/player_1_name"/>
+        android:hint="@string/player_x_name"/>
 
     <EditText
         android:layout_width="match_parent"
@@ -47,7 +47,7 @@
         android:textColor="@color/colorAccent"
         android:id="@+id/player_two_name_edit_text"
         android:layout_below="@+id/player_one_name_edit_text"
-        android:hint="@string/player_2_name"/>
+        android:hint="@string/player_o_name"/>
 
     <Button
         android:layout_width="match_parent"

@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.akshay.ticktactoe.R;
 
@@ -37,13 +38,18 @@ public class MainActivity extends AppCompatActivity {
         startButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent startGame = new Intent(getApplicationContext(), GameActivity.class);
-                startGame.putExtra("PlayerOne", playerOneText.getText().toString());
-                startGame.putExtra("PlayerTwo", playerTwoText.getText().toString());
-                startActivity(startGame);
+                if (!playerOneText.getText().toString().equals("") || !playerTwoText.getText().toString().equals("") ) {
+                    Intent startGame = new Intent(getApplicationContext(), GameActivity.class);
+                    startGame.putExtra("PlayerOne", playerOneText.getText().toString());
+                    startGame.putExtra("PlayerTwo", playerTwoText.getText().toString());
+                    startActivity(startGame);
+                }
+                else {
+                    Toast.makeText(getApplicationContext(),"Please enter all player names",Toast.LENGTH_LONG)
+                            .show();
+                }
+
             }
         });
-
     }
-
 }
