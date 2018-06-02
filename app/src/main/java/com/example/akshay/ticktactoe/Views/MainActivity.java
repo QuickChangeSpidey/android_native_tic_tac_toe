@@ -38,17 +38,18 @@ public class MainActivity extends AppCompatActivity {
         startButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (!playerOneText.getText().toString().equals("") || !playerTwoText.getText().toString().equals("") ) {
+                if (!playerOneText.getText().toString().equals("")
+                        && !playerTwoText.getText().toString().equals("")
+                        && !playerTwoText.getText().toString().equals(playerOneText.getText().toString()) ) {
                     Intent startGame = new Intent(getApplicationContext(), GameActivity.class);
                     startGame.putExtra("PlayerOne", playerOneText.getText().toString());
                     startGame.putExtra("PlayerTwo", playerTwoText.getText().toString());
                     startActivity(startGame);
                 }
                 else {
-                    Toast.makeText(getApplicationContext(),"Please enter all player names",Toast.LENGTH_LONG)
+                    Toast.makeText(getApplicationContext(),"Please check player names",Toast.LENGTH_LONG)
                             .show();
                 }
-
             }
         });
     }

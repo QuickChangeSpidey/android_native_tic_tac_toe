@@ -12,7 +12,7 @@
         <item name="android:windowBackground">@drawable/launcher</item>
     </style>
 
-    <style name="GameTheme" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="GameTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorAccent</item>
         <item name="colorPrimaryDark">@color/colorAccent</item>
