@@ -1,0 +1,23 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.example.prosen.menuexample.MenuExampleActivity">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/menu_restart"
+            android:orderInCategory="1"
+            app:showAsAction="never"
+            android:title="@string/restart"/>
+        <item
+            android:id="@+id/menu_rules"
+            android:orderInCategory="2"
+            app:showAsAction="never"
+            android:title="@string/rules"/>
+        <item
+            android:id="@+id/menu_stop"
+            android:orderInCategory="3"
+            app:showAsAction="never"
+            android:title="@string/stop"/>
+    </group>
+
+</menu>

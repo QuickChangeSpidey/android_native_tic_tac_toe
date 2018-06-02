@@ -25,7 +25,8 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".Views.GameActivity">
+        <activity android:name=".Views.GameActivity"
+            android:theme="@style/GameTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
