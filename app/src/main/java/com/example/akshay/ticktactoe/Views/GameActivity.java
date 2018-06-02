@@ -1,7 +1,7 @@
 package com.example.akshay.ticktactoe.Views;
 
+
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -10,6 +10,8 @@ import android.view.MenuItem;
 
 import com.example.akshay.ticktactoe.R;
 
+import Helpers.MessageHelper;
+import Helpers.NavigationHelper;
 import butterknife.ButterKnife;
 
 
@@ -34,19 +36,20 @@ public class GameActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.menu_restart:
+                Intent intent = getIntent();
+                finish();
+                startActivity(intent);
                 return true;
             case R.id.menu_rules:
-                playVideo();
+                NavigationHelper navigationHelper = new NavigationHelper();
+                navigationHelper.goToRulesActivity(this);
                 return true;
             case R.id.menu_stop:
+                MessageHelper messageHelper = new MessageHelper();
+                messageHelper.stopDialogMessage(this).show();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
-    }
-
-    public void playVideo(){
-        Intent intent = new Intent(this, RulesActivity.class);
-        startActivity(intent);
     }
 }

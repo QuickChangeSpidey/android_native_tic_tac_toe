@@ -1,10 +1,12 @@
 package Helpers;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.MenuItem;
 import com.example.akshay.ticktactoe.R;
+import com.example.akshay.ticktactoe.Views.RulesActivity;
 
 public class NavigationHelper {
 
@@ -33,5 +35,10 @@ public class NavigationHelper {
                         return true;
                     }
                 });
+    }
+
+    public void goToRulesActivity(AppCompatActivity context){
+        Intent intent = new Intent(context, RulesActivity.class);
+        context.startActivity(intent);
     }
 }
