@@ -11,6 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
+        android:id="@+id/container_main"
         android:gravity="center">
 
 
@@ -52,11 +53,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/colorAccent"
+        android:id="@+id/start_game_button"
         android:layout_below="@+id/player_two_name_edit_text"
         android:layout_marginTop="20dp"
         android:text="@string/start"
         android:textSize="20dp"
-        android:onClick="startGame"
         android:textColor="@android:color/white"/>
 
     </RelativeLayout>
