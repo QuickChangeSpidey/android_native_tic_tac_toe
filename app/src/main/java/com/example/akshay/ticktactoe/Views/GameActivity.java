@@ -1,5 +1,7 @@
 package com.example.akshay.ticktactoe.Views;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -30,19 +32,21 @@ public class GameActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle item selection
         switch (item.getItemId()) {
             case R.id.menu_restart:
-                //newGame();
                 return true;
             case R.id.menu_rules:
-                //showHelp();
+                playVideo();
                 return true;
             case R.id.menu_stop:
-                //stop()
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    public void playVideo(){
+        Intent intent = new Intent(this, RulesActivity.class);
+        startActivity(intent);
     }
 }

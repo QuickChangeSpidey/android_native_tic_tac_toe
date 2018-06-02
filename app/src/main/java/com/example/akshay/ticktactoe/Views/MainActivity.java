@@ -40,14 +40,13 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if (!playerOneText.getText().toString().equals("")
                         && !playerTwoText.getText().toString().equals("")
-                        && !playerTwoText.getText().toString().equals(playerOneText.getText().toString()) ) {
+                        && !playerTwoText.getText().toString().equals(playerOneText.getText().toString())) {
                     Intent startGame = new Intent(getApplicationContext(), GameActivity.class);
                     startGame.putExtra("PlayerOne", playerOneText.getText().toString());
                     startGame.putExtra("PlayerTwo", playerTwoText.getText().toString());
                     startActivity(startGame);
-                }
-                else {
-                    Toast.makeText(getApplicationContext(),"Please check player names",Toast.LENGTH_LONG)
+                } else {
+                    Toast.makeText(getApplicationContext(), "Please check player names", Toast.LENGTH_LONG)
                             .show();
                 }
             }
