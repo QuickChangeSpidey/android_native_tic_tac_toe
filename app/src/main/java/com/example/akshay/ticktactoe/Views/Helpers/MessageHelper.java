@@ -24,4 +24,19 @@ public class MessageHelper {
                 });
         return builder.create();
     }
+
+    public Dialog winnerDialog(final Context context, String message){
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        builder.setMessage(message)
+                .setPositiveButton("Restart", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                    }
+                })
+                .setNegativeButton("Close", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        ((AppCompatActivity) context).finish();
+                    }
+                });
+        return builder.create();
+    }
 }

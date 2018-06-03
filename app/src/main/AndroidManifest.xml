@@ -42,6 +42,15 @@
         <activity android:name=".Views.RulesActivity"
             android:theme="@style/GameTheme">
         </activity>
+
+
+        <receiver android:name=".Views.Helpers.WinReceiver" >
+            <intent-filter>
+                <action android:name="com.example.akshay.ticktactoe.WIN_INTENT">
+                </action>
+            </intent-filter>
+        </receiver>
+
     </application>
 
 </manifest>

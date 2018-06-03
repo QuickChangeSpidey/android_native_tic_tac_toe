@@ -1,6 +1,7 @@
 package com.example.akshay.ticktactoe.Views.Fragments;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -11,7 +12,9 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.example.akshay.ticktactoe.R;
+import com.example.akshay.ticktactoe.Views.Helpers.MessageHelper;
 import com.example.akshay.ticktactoe.Views.Helpers.OnMessageSendListener;
+import com.example.akshay.ticktactoe.Views.Helpers.WinReceiver;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -52,6 +55,7 @@ public class GameFragment extends Fragment implements View.OnClickListener {
     Button b22;
 
     int[][] boardStatus = new int[3][3];
+
 
 
     @Nullable
@@ -98,7 +102,7 @@ public class GameFragment extends Fragment implements View.OnClickListener {
                     b00.setText("X");
                     boardStatus[0][0] = 1;
                 } else {
-                    b00.setText("0");
+                    b00.setText("O");
                     boardStatus[0][0] = 0;
                 }
                 b00.setEnabled(false);
@@ -109,7 +113,7 @@ public class GameFragment extends Fragment implements View.OnClickListener {
                     b01.setText("X");
                     boardStatus[0][1] = 1;
                 } else {
-                    b01.setText("0");
+                    b01.setText("O");
                     boardStatus[0][1] = 0;
                 }
                 b01.setEnabled(false);
@@ -120,7 +124,7 @@ public class GameFragment extends Fragment implements View.OnClickListener {
                     b02.setText("X");
                     boardStatus[0][2] = 1;
                 } else {
-                    b02.setText("0");
+                    b02.setText("O");
                     boardStatus[0][2] = 0;
                 }
                 b02.setEnabled(false);
@@ -131,7 +135,7 @@ public class GameFragment extends Fragment implements View.OnClickListener {
                     b10.setText("X");
                     boardStatus[1][0] = 1;
                 } else {
-                    b10.setText("0");
+                    b10.setText("O");
                     boardStatus[1][0] = 0;
                 }
                 b10.setEnabled(false);
@@ -142,7 +146,7 @@ public class GameFragment extends Fragment implements View.OnClickListener {
                     b11.setText("X");
                     boardStatus[1][1] = 1;
                 } else {
-                    b11.setText("0");
+                    b11.setText("O");
                     boardStatus[1][1] = 0;
                 }
                 b11.setEnabled(false);
@@ -153,7 +157,7 @@ public class GameFragment extends Fragment implements View.OnClickListener {
                     b12.setText("X");
                     boardStatus[1][2] = 1;
                 } else {
-                    b12.setText("0");
+                    b12.setText("O");
                     boardStatus[1][2] = 0;
                 }
                 b12.setEnabled(false);
@@ -164,7 +168,7 @@ public class GameFragment extends Fragment implements View.OnClickListener {
                     b20.setText("X");
                     boardStatus[2][0] = 1;
                 } else {
-                    b20.setText("0");
+                    b20.setText("O");
                     boardStatus[2][0] = 0;
                 }
                 b20.setEnabled(false);
@@ -175,7 +179,7 @@ public class GameFragment extends Fragment implements View.OnClickListener {
                     b21.setText("X");
                     boardStatus[2][1] = 1;
                 } else {
-                    b21.setText("0");
+                    b21.setText("O");
                     boardStatus[2][1] = 0;
                 }
                 b21.setEnabled(false);
@@ -186,7 +190,7 @@ public class GameFragment extends Fragment implements View.OnClickListener {
                     b22.setText("X");
                     boardStatus[2][2] = 1;
                 } else {
-                    b22.setText("0");
+                    b22.setText("O");
                     boardStatus[2][2] = 0;
                 }
                 b22.setEnabled(false);
@@ -209,6 +213,7 @@ public class GameFragment extends Fragment implements View.OnClickListener {
             }
             if(TURN_COUNT==9){
                 mCallback.onMessageSelected("Game Draw");
+                broadcastIntent("Game Draw");
             }
             checkWinner();
     }
@@ -220,10 +225,12 @@ public class GameFragment extends Fragment implements View.OnClickListener {
             if(boardStatus[i][0] == boardStatus[i][1] && boardStatus[i][0] == boardStatus[i][2]){
                 if (boardStatus[i][0]==1){
                     result("Player X winner\n" + (i+1)+" row");
+                    broadcastIntent("Player X winner\n");
                     break;
                 }
                 else if (boardStatus[i][0]==0) {
-                    result("Player 0 winner\n" + (i+1)+" row");
+                    result("Player O winner\n" + (i+1)+" row");
+                    broadcastIntent("Player O winner\n");
                     break;
                 }
             }
@@ -234,10 +241,13 @@ public class GameFragment extends Fragment implements View.OnClickListener {
             if(boardStatus[0][i] == boardStatus[1][i] && boardStatus[0][i] == boardStatus[2][i]){
                 if (boardStatus[0][i]==1){
                     result("Player X winner\n" + (i+1)+" column");
+                    broadcastIntent("Player X winner\n");
                     break;
                 }
                 else if (boardStatus[0][i]==0) {
-                    result("Player 0 winner\n" + (i+1)+" column");
+                    result("Player O winner\n" + (i+1)+" column");
+                    broadcastIntent("Player O winner\n");
+
                     break;
                 }
             }
@@ -247,9 +257,13 @@ public class GameFragment extends Fragment implements View.OnClickListener {
         if(boardStatus[0][0] == boardStatus[1][1] && boardStatus[0][0] == boardStatus[2][2]){
             if (boardStatus[0][0]==1){
                 result("Player X winner\nFirst Diagonal");
+                broadcastIntent("Player X winner\n");
+
             }
             else if (boardStatus[0][0]==0) {
-                result("Player 0 winner\nFirst Diagonal");
+                result("Player O winner\nFirst Diagonal");
+                broadcastIntent("Player O winner\n");
+
             }
         }
 
@@ -257,9 +271,12 @@ public class GameFragment extends Fragment implements View.OnClickListener {
         if(boardStatus[0][2] == boardStatus[1][1] && boardStatus[0][2] == boardStatus[2][0]){
             if (boardStatus[0][2]==1){
                 result("Player X winner\nSecond Diagonal");
+                broadcastIntent("Player X winner\n");
             }
             else if (boardStatus[0][2]==0) {
-                result("Player 0 winner\nSecond Diagonal");
+                result("Player O winner\nSecond Diagonal");
+                broadcastIntent("Player O winner\n");
+
             }
         }
     }
@@ -288,9 +305,16 @@ public class GameFragment extends Fragment implements View.OnClickListener {
         }
     }
 
-    private void result(String winner){
-        mCallback.onMessageSelected(winner);
+    private void result(String message){
+        mCallback.onMessageSelected(message);
         enableAllBoxes(false);
+    }
+
+    public void broadcastIntent(String message) {
+        Intent intent = new Intent();
+        intent.putExtra("Winner Name",message);
+        intent.setAction("com.example.akshay.ticktactoe.WIN_INTENT");
+        getActivity().sendBroadcast(intent);
     }
 
 }
