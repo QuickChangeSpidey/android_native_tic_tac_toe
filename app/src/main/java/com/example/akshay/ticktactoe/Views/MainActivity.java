@@ -9,22 +9,13 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.akshay.ticktactoe.R;
+import com.example.akshay.ticktactoe.Views.Fragments.LoginFragment;
 
 import Helpers.NavigationHelper;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity {
-
-    @BindView(R.id.player_one_name_edit_text)
-    EditText playerOneText;
-
-    @BindView(R.id.player_two_name_edit_text)
-    EditText playerTwoText;
-
-    @BindView(R.id.start_game_button)
-    Button startButton;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,22 +25,9 @@ public class MainActivity extends AppCompatActivity {
         NavigationHelper navigationHelper = new NavigationHelper();
         navigationHelper.createMenuForActivity(this);
 
+        getSupportFragmentManager().beginTransaction()
+                .add(R.id.container_main, new LoginFragment(),null)
+                .commit();
 
-        startButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (!playerOneText.getText().toString().equals("")
-                        && !playerTwoText.getText().toString().equals("")
-                        && !playerTwoText.getText().toString().equals(playerOneText.getText().toString())) {
-                    Intent startGame = new Intent(getApplicationContext(), GameActivity.class);
-                    startGame.putExtra("PlayerOne", playerOneText.getText().toString());
-                    startGame.putExtra("PlayerTwo", playerTwoText.getText().toString());
-                    startActivity(startGame);
-                } else {
-                    Toast.makeText(getApplicationContext(), "Please check player names", Toast.LENGTH_LONG)
-                            .show();
-                }
-            }
-        });
     }
 }

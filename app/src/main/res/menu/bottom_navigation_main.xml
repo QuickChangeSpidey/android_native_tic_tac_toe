@@ -16,15 +16,10 @@
         android:title="@string/history"
         app:showAsAction="ifRoom" />
     <item
-        android:id="@+id/action_settings"
+        android:id="@+id/action_faq"
         android:enabled="true"
         android:icon="@drawable/ic_launcher_background"
-        android:title="@string/settings"
+        android:title="@string/faq"
         app:showAsAction="ifRoom" />
-    <item
-        android:id="@+id/action_rules"
-        android:enabled="true"
-        android:icon="@drawable/ic_launcher_background"
-        android:title="@string/rules"
-        app:showAsAction="ifRoom" />
+
 </menu>

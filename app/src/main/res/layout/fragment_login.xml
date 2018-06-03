@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingLeft="20dp"
+        android:layout_weight="0.5"
+        android:paddingRight="20dp"
+        android:gravity="center">
+
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:shadowColor="@color/colorAccent"
+            android:id="@+id/player_one_name_edit_text"
+            android:layout_marginBottom="20dp"
+            android:textColor="@color/colorAccent"
+            android:hint="@string/player_x_name"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:shadowColor="@color/colorAccent"
+            android:textColor="@color/colorAccent"
+            android:id="@+id/player_two_name_edit_text"
+            android:layout_below="@+id/player_one_name_edit_text"
+            android:hint="@string/player_o_name"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorAccent"
+            android:id="@+id/start_game_button"
+            android:layout_below="@+id/player_two_name_edit_text"
+            android:layout_marginTop="20dp"
+            android:text="@string/start"
+            android:textSize="20dp"
+            android:textColor="@android:color/white"/>
+
+    </RelativeLayout>
+
+</android.support.constraint.ConstraintLayout>

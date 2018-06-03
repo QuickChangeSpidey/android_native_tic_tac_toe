@@ -7,73 +7,40 @@
     android:layout_height="match_parent"
     tools:context=".Views.MainActivity">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:id="@+id/container_main"
-        android:gravity="center">
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
 
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:layout_marginBottom="30dp"
+        android:id="@+id/main_image"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
         android:src="@mipmap/ic_splash_image"/>
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:paddingLeft="20dp"
-        android:layout_weight="0.5"
-        android:paddingRight="20dp"
-        android:gravity="center">
+        android:orientation="vertical"
+        android:id="@+id/container_main"
+        android:layout_below="@+id/main_image"
+        android:layout_above="@id/bottom_navigation"
+        android:layout_height="wrap_content">
 
-
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:shadowColor="@color/colorAccent"
-        android:id="@+id/player_one_name_edit_text"
-        android:layout_marginBottom="20dp"
-        android:textColor="@color/colorAccent"
-        android:hint="@string/player_x_name"/>
-
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:shadowColor="@color/colorAccent"
-        android:textColor="@color/colorAccent"
-        android:id="@+id/player_two_name_edit_text"
-        android:layout_below="@+id/player_one_name_edit_text"
-        android:hint="@string/player_o_name"/>
-
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/colorAccent"
-        android:id="@+id/start_game_button"
-        android:layout_below="@+id/player_two_name_edit_text"
-        android:layout_marginTop="20dp"
-        android:text="@string/start"
-        android:textSize="20dp"
-        android:textColor="@android:color/white"/>
-
-    </RelativeLayout>
-
-
+    </LinearLayout>
 
         <android.support.design.widget.BottomNavigationView
             android:id="@+id/bottom_navigation"
             android:layout_width="match_parent"
+            android:layout_alignParentBottom="true"
             android:layout_height="wrap_content"
             app:itemBackground="@color/colorAccent"
             app:itemTextColor="@android:color/white"
             app:menu="@menu/bottom_navigation_main" />
 
-    </LinearLayout>
 
+</RelativeLayout>
 
 
 </android.support.constraint.ConstraintLayout>

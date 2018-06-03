@@ -6,11 +6,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.MenuItem;
 import com.example.akshay.ticktactoe.R;
+import com.example.akshay.ticktactoe.Views.Fragments.FAQFragment;
 import com.example.akshay.ticktactoe.Views.RulesActivity;
 
 public class NavigationHelper {
 
-    public void createMenuForActivity(AppCompatActivity activity) {
+    public void createMenuForActivity(final AppCompatActivity activity) {
         BottomNavigationView bottomNavigationView =
                 activity.findViewById(R.id.bottom_navigation);
 
@@ -20,16 +21,14 @@ public class NavigationHelper {
                     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                         switch (item.getItemId()) {
                             case R.id.action_main:
-                                Log.d("test", "test1");
                                 break;
                             case R.id.action_history:
-                                Log.d("test", "test1");
                                 break;
-                            case R.id.action_settings:
-                                Log.d("test", "test2");
-                                break;
-                            case R.id.action_rules:
-                                Log.d("test", "test3");
+                            case R.id.action_faq:
+                                activity.getSupportFragmentManager().beginTransaction()
+                                        .replace(R.id.container_main,new FAQFragment())
+                                        .addToBackStack(null)
+                                        .commit();
                                 break;
                         }
                         return true;
