@@ -10,6 +10,8 @@ import android.view.MenuItem;
 
 import com.example.akshay.ticktactoe.R;
 
+import com.example.akshay.ticktactoe.Views.Fragments.FragmentScore;
+import com.example.akshay.ticktactoe.Views.Fragments.FragmentGame;
 import com.example.akshay.ticktactoe.Views.Helpers.MessageHelper;
 import com.example.akshay.ticktactoe.Views.Helpers.NavigationHelper;
 import butterknife.ButterKnife;
@@ -23,6 +25,10 @@ public class GameActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
         ButterKnife.bind(this);
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_score_container,new FragmentScore(),null)
+                .commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_board_container,new FragmentGame(),null)
+                .commit();
     }
 
     @Override
