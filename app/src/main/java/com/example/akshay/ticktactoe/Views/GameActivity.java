@@ -4,6 +4,7 @@ package com.example.akshay.ticktactoe.Views;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -31,6 +32,16 @@ public class GameActivity extends AppCompatActivity implements OnMessageSendList
                 .commit();
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_board_container,new GameFragment(),null)
                 .commit();
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        ScoreFragment fragment = (ScoreFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_score_container);
+        fragment.setPlayerNames(getIntent().getStringExtra("PlayerOne").toString(),
+                getIntent().getStringExtra("PlayerTwo").toString());
+
     }
 
     @Override

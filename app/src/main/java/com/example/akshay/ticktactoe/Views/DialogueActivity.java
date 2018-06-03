@@ -22,6 +22,6 @@ public class DialogueActivity extends AppCompatActivity{
     }
     public void restartGame(View view){
 
-        
+
     }
 }
