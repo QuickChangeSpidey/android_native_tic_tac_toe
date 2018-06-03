@@ -8,7 +8,7 @@ import android.webkit.WebView;
 
 import com.example.akshay.ticktactoe.R;
 
-import Helpers.WebViewClientHelper;
+import com.example.akshay.ticktactoe.Views.Helpers.WebViewClientHelper;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 

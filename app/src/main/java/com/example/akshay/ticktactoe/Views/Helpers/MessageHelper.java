@@ -1,4 +1,4 @@
-package Helpers;
+package com.example.akshay.ticktactoe.Views.Helpers;
 
 import android.app.Dialog;
 import android.content.Context;

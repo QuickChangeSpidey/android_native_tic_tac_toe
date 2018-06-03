@@ -10,8 +10,8 @@ import android.view.MenuItem;
 
 import com.example.akshay.ticktactoe.R;
 
-import Helpers.MessageHelper;
-import Helpers.NavigationHelper;
+import com.example.akshay.ticktactoe.Views.Helpers.MessageHelper;
+import com.example.akshay.ticktactoe.Views.Helpers.NavigationHelper;
 import butterknife.ButterKnife;
 
 

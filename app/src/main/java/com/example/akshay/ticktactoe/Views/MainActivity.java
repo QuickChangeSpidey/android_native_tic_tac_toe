@@ -1,18 +1,13 @@
 package com.example.akshay.ticktactoe.Views;
 
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.Toast;
 
 import com.example.akshay.ticktactoe.R;
 import com.example.akshay.ticktactoe.Views.Fragments.LoginFragment;
 
-import Helpers.NavigationHelper;
-import butterknife.BindView;
+import com.example.akshay.ticktactoe.Views.Helpers.NavigationHelper;
+
 import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity {
