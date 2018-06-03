@@ -1,5 +1,6 @@
 package com.example.akshay.ticktactoe.Views.Fragments;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -10,11 +11,14 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.example.akshay.ticktactoe.R;
+import com.example.akshay.ticktactoe.Views.Helpers.OnMessageSendListener;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class FragmentGame extends Fragment implements View.OnClickListener {
+public class GameFragment extends Fragment implements View.OnClickListener {
+
+    OnMessageSendListener mCallback;
 
     boolean PLAYER_X = true;
 
@@ -196,13 +200,15 @@ public class FragmentGame extends Fragment implements View.OnClickListener {
             TURN_COUNT ++;
             PLAYER_X = !PLAYER_X;
             if(PLAYER_X){
-                //setStatus("Player X turn");
+                mCallback.onMessageSelected("Player X's turn");
+
             }
             else {
-                //setStatus("Player 0 turn");
+                mCallback.onMessageSelected("Player O's turn");
+
             }
             if(TURN_COUNT==9){
-                //setStatus("Game Draw");
+                mCallback.onMessageSelected("Game Draw");
             }
             checkWinner();
     }
@@ -270,9 +276,20 @@ public class FragmentGame extends Fragment implements View.OnClickListener {
         b22.setEnabled(value);
     }
 
-    private void result(String winner){
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
 
-        //setStatus(winner);
+        try {
+            mCallback = (OnMessageSendListener) activity;
+        } catch (ClassCastException e) {
+            throw new ClassCastException(activity.toString()
+                    + " must implement OnMessageSendListener");
+        }
+    }
+
+    private void result(String winner){
+        mCallback.onMessageSelected(winner);
         enableAllBoxes(false);
     }
 
