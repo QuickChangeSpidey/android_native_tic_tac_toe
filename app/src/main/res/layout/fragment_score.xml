@@ -9,11 +9,12 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="15dp"
+            android:textSize="20dp"
             android:gravity="center"
             android:textStyle="bold"
             android:layout_marginBottom="20dp"
             android:id="@+id/player_turn_text"
+            android:textColor="@color/colorAccent"
             android:text="Player X's Turn "/>
 
          <LinearLayout
@@ -25,10 +26,11 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="15dp"
+                android:textSize="20dp"
                 android:paddingLeft="10dp"
                 android:id="@+id/player_x_name_text"
                 android:textStyle="bold"
+                android:textColor="@color/colorAccent"
                 android:layout_weight="0.5"
                 android:text="Player X: "/>
 
@@ -37,7 +39,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="0.5"
                 android:id="@+id/player_o_name_text"
-                android:textSize="15dp"
+                android:textSize="20dp"
+                android:textColor="@color/colorAccent"
                 android:textStyle="bold"
                 android:text="Player O: "/>
 

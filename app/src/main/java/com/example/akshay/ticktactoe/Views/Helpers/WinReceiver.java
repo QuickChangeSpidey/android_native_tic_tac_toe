@@ -1,18 +1,16 @@
 package com.example.akshay.ticktactoe.Views.Helpers;
 
-import android.app.Dialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 
+import com.example.akshay.ticktactoe.Views.DialogueActivity;
+
 public class WinReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
-
-        MessageHelper messageHelper = new MessageHelper();
-        Dialog dialog =messageHelper.
-                winnerDialog(context,intent.getStringExtra("Winner Name").toString());
-        dialog.show();
-
+        Intent i = new Intent(context, DialogueActivity.class);
+        i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        context.startActivity(i);
     }
 }

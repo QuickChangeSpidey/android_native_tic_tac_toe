@@ -46,10 +46,14 @@
 
         <receiver android:name=".Views.Helpers.WinReceiver" >
             <intent-filter>
-                <action android:name="com.example.akshay.ticktactoe.WIN_INTENT">
+                <action android:name="com.example.akshay.ticktactoe.WIN_INTENT_RECEIVER">
                 </action>
             </intent-filter>
         </receiver>
+
+        <activity android:name=".Views.DialogueActivity"
+            android:theme="@style/DialogTheme">
+        </activity>
 
     </application>
 

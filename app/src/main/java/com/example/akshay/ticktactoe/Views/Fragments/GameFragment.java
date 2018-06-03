@@ -12,9 +12,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.example.akshay.ticktactoe.R;
-import com.example.akshay.ticktactoe.Views.Helpers.MessageHelper;
 import com.example.akshay.ticktactoe.Views.Helpers.OnMessageSendListener;
-import com.example.akshay.ticktactoe.Views.Helpers.WinReceiver;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -313,7 +311,7 @@ public class GameFragment extends Fragment implements View.OnClickListener {
     public void broadcastIntent(String message) {
         Intent intent = new Intent();
         intent.putExtra("Winner Name",message);
-        intent.setAction("com.example.akshay.ticktactoe.WIN_INTENT");
+        intent.setAction("com.example.akshay.ticktactoe.WIN_INTENT_RECEIVER");
         getActivity().sendBroadcast(intent);
     }
 
