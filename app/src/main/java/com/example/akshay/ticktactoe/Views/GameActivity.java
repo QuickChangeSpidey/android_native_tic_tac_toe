@@ -5,16 +5,20 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
 import com.example.akshay.ticktactoe.R;
 
+import com.example.akshay.ticktactoe.Views.Application.App;
 import com.example.akshay.ticktactoe.Views.Fragments.ScoreFragment;
 import com.example.akshay.ticktactoe.Views.Fragments.GameFragment;
 import com.example.akshay.ticktactoe.Views.Helpers.MessageHelper;
 import com.example.akshay.ticktactoe.Views.Helpers.NavigationHelper;
 import com.example.akshay.ticktactoe.Views.Helpers.OnMessageSendListener;
+import com.squareup.otto.Bus;
+import com.squareup.otto.Subscribe;
 
 import butterknife.ButterKnife;
 
@@ -31,7 +35,6 @@ public class GameActivity extends AppCompatActivity implements OnMessageSendList
                 .commit();
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_board_container,new GameFragment(),null)
                 .commit();
-
     }
 
     @Override
@@ -79,6 +82,6 @@ public class GameActivity extends AppCompatActivity implements OnMessageSendList
         if (scoreFragment != null) {
             scoreFragment.updateData(message);
         }
-
     }
+
 }

@@ -1,5 +1,6 @@
 package com.example.akshay.ticktactoe.Views;
 
+import android.app.Application;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -7,6 +8,8 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.example.akshay.ticktactoe.R;
+import com.example.akshay.ticktactoe.Views.Application.App;
+import com.squareup.otto.Bus;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -22,15 +25,13 @@ public class DialogueActivity extends AppCompatActivity{
         setContentView(R.layout.activity_result);
         ButterKnife.bind(this);
         winnerText.setText(getIntent().getStringExtra("Winner"));
-
     }
 
     public void closeDialog(View view){
         finish();
-
     }
-    public void restartGame(View view){
 
+    public void restartGame(View view){
 
     }
 }
