@@ -310,7 +310,7 @@ public class GameFragment extends Fragment implements View.OnClickListener {
 
     public void broadcastIntent(String message) {
         Intent intent = new Intent();
-        intent.putExtra("Winner Name",message);
+        intent.putExtra("Winner",message);
         intent.setAction("com.example.akshay.ticktactoe.WIN_INTENT_RECEIVER");
         getActivity().sendBroadcast(intent);
     }
