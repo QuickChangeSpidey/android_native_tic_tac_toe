@@ -1,6 +1,5 @@
 package com.example.akshay.ticktactoe.Views;
 
-import android.app.Application;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -9,7 +8,7 @@ import android.widget.TextView;
 
 import com.example.akshay.ticktactoe.R;
 import com.example.akshay.ticktactoe.Views.Application.App;
-import com.squareup.otto.Bus;
+import com.example.akshay.ticktactoe.Views.Application.Events;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -32,6 +31,8 @@ public class DialogueActivity extends AppCompatActivity{
     }
 
     public void restartGame(View view){
-
+        App app = (App)getApplicationContext();
+        app.getBus().post(new Events("restart"));
+        closeDialog(view);
     }
 }

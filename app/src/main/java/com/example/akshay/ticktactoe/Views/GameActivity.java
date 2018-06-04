@@ -12,6 +12,7 @@ import android.view.MenuItem;
 import com.example.akshay.ticktactoe.R;
 
 import com.example.akshay.ticktactoe.Views.Application.App;
+import com.example.akshay.ticktactoe.Views.Application.Events;
 import com.example.akshay.ticktactoe.Views.Fragments.ScoreFragment;
 import com.example.akshay.ticktactoe.Views.Fragments.GameFragment;
 import com.example.akshay.ticktactoe.Views.Helpers.MessageHelper;
@@ -54,12 +55,25 @@ public class GameActivity extends AppCompatActivity implements OnMessageSendList
     }
 
     @Override
+    protected void onStart() {
+        super.onStart();
+        App state = ((App) getApplicationContext());
+        state.getBus().register(this);
+
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        App state = (App)getApplicationContext();
+        state.getBus().unregister(this);
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.menu_restart:
-                Intent intent = getIntent();
-                finish();
-                startActivity(intent);
+                restart();
                 return true;
             case R.id.menu_rules:
                 NavigationHelper navigationHelper = new NavigationHelper();
@@ -82,6 +96,18 @@ public class GameActivity extends AppCompatActivity implements OnMessageSendList
         if (scoreFragment != null) {
             scoreFragment.updateData(message);
         }
+    }
+
+    @Subscribe
+    public void restartMessage(Events message){
+        if(message.getMessage().equals("restart"))
+            restart();
+    }
+
+    public void restart(){
+        Intent intent = getIntent();
+        finish();
+        startActivity(intent);
     }
 
 }
