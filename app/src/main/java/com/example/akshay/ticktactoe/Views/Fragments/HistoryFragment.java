@@ -17,6 +17,7 @@ import com.example.akshay.ticktactoe.Views.Models.Game;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import io.realm.OrderedRealmCollection;
 import io.realm.Realm;
 import io.realm.RealmResults;
 
@@ -46,10 +47,9 @@ public class HistoryFragment extends Fragment {
 
         Realm realm = Realm.getDefaultInstance();
 
-        RealmResults<Game> games = realm.where(Game.class).findAll();
+        OrderedRealmCollection<Game> games = realm.where(Game.class).findAll();
 
-
-        mAdapter = new MyAdapter(games);
+        mAdapter = new MyAdapter(getActivity(),games,true);
         mRecyclerView.setAdapter(mAdapter);
 
     }
