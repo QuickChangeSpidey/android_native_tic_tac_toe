@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:weightSum="1"
+    android:padding="20dp"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_weight="0.1"
+        android:textSize="15dp"
+        android:textStyle="bold"
+        android:padding="2dp"
+        android:id="@+id/game_number"
+        android:text="Game Number"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_weight="0.4"
+        android:textSize="15dp"
+        android:textStyle="bold"
+        android:padding="2dp"
+        android:id="@+id/winner_details"
+        android:text="Winner Details" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:padding="2dp"
+        android:layout_height="match_parent"
+        android:layout_weight="0.5"
+        android:id="@+id/date_time"
+        android:textSize="15dp"
+        android:textStyle="bold"
+        android:text="Time and Date" />
+
+
+</LinearLayout>
