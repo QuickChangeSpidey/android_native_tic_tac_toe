@@ -24,13 +24,14 @@ public class DialogueActivity extends AppCompatActivity{
         setContentView(R.layout.activity_result);
         ButterKnife.bind(this);
         winnerText.setText(getIntent().getStringExtra("Winner"));
+        this.setFinishOnTouchOutside(false);
+
     }
 
     public void closeDialog(View view){
         finish();
         App app = (App)getApplicationContext();
         app.getBus().post(new Events("save",winnerText.getText().toString()));
-        closeDialog(view);
     }
 
     public void restartGame(View view){

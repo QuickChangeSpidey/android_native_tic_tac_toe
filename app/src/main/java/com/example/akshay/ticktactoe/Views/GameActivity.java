@@ -33,7 +33,6 @@ import io.realm.RealmConfiguration;
 public class GameActivity extends AppCompatActivity implements OnMessageSendListener {
 
 
-    Realm realm;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,7 +42,6 @@ public class GameActivity extends AppCompatActivity implements OnMessageSendList
                 .commit();
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_board_container,new GameFragment(),null)
                 .commit();
-        Realm.init(this);
     }
 
     @Override
@@ -54,7 +52,6 @@ public class GameActivity extends AppCompatActivity implements OnMessageSendList
         fragment.setPlayerNames(getIntent().getStringExtra("PlayerOne"),
                 getIntent().getStringExtra("PlayerTwo"));
 
-        realm = Realm.getDefaultInstance();
     }
 
     @Override
@@ -109,22 +106,12 @@ public class GameActivity extends AppCompatActivity implements OnMessageSendList
 
     @Subscribe
     public void restartMessage(Events message){
-
-
-        Date currentTime = Calendar.getInstance().getTime();
-
-        Game game = new Game();
-        game.setDate(currentTime);
-        game.setWinnerName(message.getWinnerName());
-
-        if(message.getMessage().equals("restart")||message.getMessage().equals("save"))
-
-            realm.beginTransaction();
-            realm.copyToRealm(game);
-            realm.commitTransaction();
+        if(message.getMessage().equals("restart"))
             restart();
+        if(message.getMessage().equals("save"))
+            finish();
 
-
+        //save game state
     }
 
     public void restart(){
