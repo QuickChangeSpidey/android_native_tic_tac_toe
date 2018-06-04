@@ -28,11 +28,14 @@ public class DialogueActivity extends AppCompatActivity{
 
     public void closeDialog(View view){
         finish();
+        App app = (App)getApplicationContext();
+        app.getBus().post(new Events("save",winnerText.getText().toString()));
+        closeDialog(view);
     }
 
     public void restartGame(View view){
         App app = (App)getApplicationContext();
-        app.getBus().post(new Events("restart"));
-        closeDialog(view);
+        app.getBus().post(new Events("restart",winnerText.getText().toString()));
+        finish();
     }
 }

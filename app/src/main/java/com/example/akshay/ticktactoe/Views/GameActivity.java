@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -18,15 +17,23 @@ import com.example.akshay.ticktactoe.Views.Fragments.GameFragment;
 import com.example.akshay.ticktactoe.Views.Helpers.MessageHelper;
 import com.example.akshay.ticktactoe.Views.Helpers.NavigationHelper;
 import com.example.akshay.ticktactoe.Views.Helpers.OnMessageSendListener;
-import com.squareup.otto.Bus;
+import com.example.akshay.ticktactoe.Views.Models.Game;
 import com.squareup.otto.Subscribe;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Calendar;
+import java.util.Date;
+
 import butterknife.ButterKnife;
+import io.realm.Realm;
+import io.realm.RealmConfiguration;
 
 
 public class GameActivity extends AppCompatActivity implements OnMessageSendListener {
 
 
+    Realm realm;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,15 +43,18 @@ public class GameActivity extends AppCompatActivity implements OnMessageSendList
                 .commit();
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_board_container,new GameFragment(),null)
                 .commit();
+        Realm.init(this);
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        ScoreFragment fragment = (ScoreFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_score_container);
+        ScoreFragment fragment = (ScoreFragment) getSupportFragmentManager()
+                .findFragmentById(R.id.fragment_score_container);
         fragment.setPlayerNames(getIntent().getStringExtra("PlayerOne"),
                 getIntent().getStringExtra("PlayerTwo"));
 
+        realm = Realm.getDefaultInstance();
     }
 
     @Override
@@ -59,7 +69,6 @@ public class GameActivity extends AppCompatActivity implements OnMessageSendList
         super.onStart();
         App state = ((App) getApplicationContext());
         state.getBus().register(this);
-
     }
 
     @Override
@@ -100,8 +109,22 @@ public class GameActivity extends AppCompatActivity implements OnMessageSendList
 
     @Subscribe
     public void restartMessage(Events message){
-        if(message.getMessage().equals("restart"))
+
+
+        Date currentTime = Calendar.getInstance().getTime();
+
+        Game game = new Game();
+        game.setDate(currentTime);
+        game.setWinnerName(message.getWinnerName());
+
+        if(message.getMessage().equals("restart")||message.getMessage().equals("save"))
+
+            realm.beginTransaction();
+            realm.copyToRealm(game);
+            realm.commitTransaction();
             restart();
+
+
     }
 
     public void restart(){
