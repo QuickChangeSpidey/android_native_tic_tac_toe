@@ -14,14 +14,11 @@ public class Game extends RealmObject{
 
     private String winnerName;
 
-
     public int getNumber() {
         return number;
     }
 
-    public void setNumber(int number) {
-        this.number = number;
-    }
+    public void setNumber(int number) { this.number = number;}
 
     public Date getDate() {
         return date;

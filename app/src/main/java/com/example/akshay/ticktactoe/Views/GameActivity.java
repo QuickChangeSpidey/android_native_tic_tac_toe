@@ -17,17 +17,10 @@ import com.example.akshay.ticktactoe.Views.Fragments.GameFragment;
 import com.example.akshay.ticktactoe.Views.Helpers.MessageHelper;
 import com.example.akshay.ticktactoe.Views.Helpers.NavigationHelper;
 import com.example.akshay.ticktactoe.Views.Helpers.OnMessageSendListener;
-import com.example.akshay.ticktactoe.Views.Models.Game;
 import com.squareup.otto.Subscribe;
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.Calendar;
-import java.util.Date;
 
 import butterknife.ButterKnife;
-import io.realm.Realm;
-import io.realm.RealmConfiguration;
 
 
 public class GameActivity extends AppCompatActivity implements OnMessageSendListener {
@@ -108,19 +101,17 @@ public class GameActivity extends AppCompatActivity implements OnMessageSendList
     public void restartMessage(Events message){
         String winnerName;
         winnerName = message.getWinnerName();
+        save(winnerName);
         if(message.getMessage().equals("restart"))
-            save(winnerName);
             restart();
         if(message.getMessage().equals("save"))
             finish();
-
-        //save game state
     }
 
     private void save(String winnerName) {
         ScoreFragment scoreFragment = (ScoreFragment)getSupportFragmentManager()
                 .findFragmentById(R.id.fragment_score_container);
-        scoreFragment.savePlayerInfotoDB(winnerName);
+        scoreFragment.savePlayerInfoToDB(winnerName);
     }
 
     public void restart(){
