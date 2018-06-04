@@ -106,12 +106,21 @@ public class GameActivity extends AppCompatActivity implements OnMessageSendList
 
     @Subscribe
     public void restartMessage(Events message){
+        String winnerName;
+        winnerName = message.getWinnerName();
         if(message.getMessage().equals("restart"))
+            save(winnerName);
             restart();
         if(message.getMessage().equals("save"))
             finish();
 
         //save game state
+    }
+
+    private void save(String winnerName) {
+        ScoreFragment scoreFragment = (ScoreFragment)getSupportFragmentManager()
+                .findFragmentById(R.id.fragment_score_container);
+        scoreFragment.savePlayerInfotoDB(winnerName);
     }
 
     public void restart(){

@@ -29,9 +29,10 @@ public class DialogueActivity extends AppCompatActivity{
     }
 
     public void closeDialog(View view){
-        finish();
         App app = (App)getApplicationContext();
         app.getBus().post(new Events("save",winnerText.getText().toString()));
+        finish();
+
     }
 
     public void restartGame(View view){
