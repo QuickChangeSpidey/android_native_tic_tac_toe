@@ -3,13 +3,16 @@ package com.example.akshay.ticktactoe.Views;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.akshay.ticktactoe.R;
 import com.example.akshay.ticktactoe.Views.Application.App;
 import com.example.akshay.ticktactoe.Views.Application.Events;
+import com.example.akshay.ticktactoe.Views.Helpers.MessageHelper;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -18,6 +21,12 @@ public class DialogueActivity extends AppCompatActivity{
 
     @BindView(R.id.winner_text)
     TextView winnerText;
+
+    @BindView(R.id.close_button)
+    Button closeBtn;
+
+    @BindView(R.id.restart_button)
+    Button restartBtn;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -30,14 +39,12 @@ public class DialogueActivity extends AppCompatActivity{
     }
 
     public void closeDialog(View view){
-
         finish();
-        App app = (App)getApplicationContext();
-        app.getBus().post(new Events("save",winnerText.getText().toString()));
-        Intent i = new Intent(this,MainActivity.class);
+        App app = (App) getApplicationContext();
+        app.getBus().post(new Events("save", winnerText.getText().toString()));
+        Intent i = new Intent(this, MainActivity.class);
         i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(i);
-
     }
 
     public void restartGame(View view){

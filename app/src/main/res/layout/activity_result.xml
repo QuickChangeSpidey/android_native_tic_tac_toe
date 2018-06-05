@@ -37,6 +37,7 @@
         android:layout_height="wrap_content"
         android:textColor="@android:color/white"
         android:text="Restart"
+            android:id="@+id/restart_button"
         android:onClick="restartGame"
         android:textSize="15dp"/>
 
@@ -44,6 +45,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@android:color/white"
+            android:id="@+id/close_button"
         android:text="Close"
         android:onClick="closeDialog"
         android:textSize="15dp"/>
