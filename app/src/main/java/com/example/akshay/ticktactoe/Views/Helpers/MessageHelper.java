@@ -39,4 +39,15 @@ public class MessageHelper {
                 });
         return builder.create();
     }
+
+    public Dialog drawDialog(final Context context){
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        builder.setMessage("It is a Draw!!!")
+                .setNegativeButton("Close", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        ((AppCompatActivity) context).finish();
+                    }
+                });
+        return builder.create();
+    }
 }

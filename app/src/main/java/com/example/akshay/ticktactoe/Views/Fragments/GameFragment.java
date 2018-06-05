@@ -13,6 +13,7 @@ import android.widget.Button;
 
 import com.example.akshay.ticktactoe.R;
 import com.example.akshay.ticktactoe.Views.Application.App;
+import com.example.akshay.ticktactoe.Views.Helpers.MessageHelper;
 import com.example.akshay.ticktactoe.Views.Helpers.OnMessageSendListener;
 
 import butterknife.BindView;
@@ -212,7 +213,8 @@ public class GameFragment extends Fragment implements View.OnClickListener {
             }
             if(TURN_COUNT==9){
                 mCallback.onMessageSelected("Game Draw");
-                broadcastIntent("Game Draw");
+                MessageHelper messageHelper = new MessageHelper();
+                messageHelper.drawDialog(getActivity()).show();
             }
             checkWinner();
     }
