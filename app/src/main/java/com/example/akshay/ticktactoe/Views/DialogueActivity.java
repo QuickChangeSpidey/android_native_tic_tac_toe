@@ -1,5 +1,6 @@
 package com.example.akshay.ticktactoe.Views;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -29,15 +30,19 @@ public class DialogueActivity extends AppCompatActivity{
     }
 
     public void closeDialog(View view){
+
+        finish();
         App app = (App)getApplicationContext();
         app.getBus().post(new Events("save",winnerText.getText().toString()));
-        finish();
+        Intent i = new Intent(this,MainActivity.class);
+        i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(i);
 
     }
 
     public void restartGame(View view){
+        finish();
         App app = (App)getApplicationContext();
         app.getBus().post(new Events("restart",winnerText.getText().toString()));
-        finish();
     }
 }
